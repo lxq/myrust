@@ -8,7 +8,13 @@
 
 fn main() {
     println!("你好, Rust!");
-    let a = 'b';
+    let b = true;
+    let c = 'b';
     let s = "未高科技";
-    println!("{}, {}",a, s);
+    let mut n = 123;
+    println!("{}, {}, {}, {}",b, c, s, n);
+    //b = false;
+    
+    n = 345;
+    println!("{}", n);
 }
