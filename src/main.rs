@@ -16,6 +16,14 @@ use rand::Rng;
 
 fn main() {
     println!("你好, Rust!");
+
+    test_variable();
+
+    guess_number();
+}
+
+// 变更练习
+fn test_variable() {
     let b = true;
     let c = 'b';
     let s = "未高科技";
@@ -26,7 +34,23 @@ fn main() {
     n = 345;
     println!("{}", n);
 
-    guess_number();
+    // tuple
+    let t:(i32, bool, f64) = (123, true, 3.14);
+    println!("tuple = ({}, {}, {})", t.0, t.1, t.2);
+    // pattern match
+    let (x,y,z) = t;
+    println!("(t.x={}, t.y={}, t.z={})", x, y, z);
+
+    // array
+    let arr = [1,2,3,4];
+    // 索引从0开始，越界会panic
+    for e in arr.iter() {
+        println!("{}", e);
+    }
+    // range revert
+    for e in (5..8).rev() {
+        println!("{}", e);
+    }
 }
 
 // 猜数字
