@@ -15,14 +15,30 @@ use std::cmp::Ordering;
 use rand::Rng;
 
 fn main() {
-    println!("你好, Rust!");
+    let mut str1 =  String::from("你好，");
+    println!("{}", str1);
+    // 可变引用调用
+    push_str(&mut str1, &String::from("rust!"));
+    println!("{}, len = {}", str1, calc_len(&str1));
 
     test_variable();
 
     guess_number();
 }
 
-// 变更练习
+// 可变引用：&mut 类型
+fn push_str(src: &mut String, sub: &String) {
+    src.push_str(sub);
+}
+
+// 引用参数
+fn calc_len(s: &String) -> usize {
+    // String长度是按字节，不是字符数
+    s.len()
+    // 表达式有返回值
+}
+
+// 变量练习
 fn test_variable() {
     let b = true;
     let c = 'b';
@@ -51,6 +67,10 @@ fn test_variable() {
     for e in (5..8).rev() {
         println!("{}", e);
     }
+
+    // 下面调用会发生所有权转移，是不允许的。
+    // takes_ownership(s);
+    makes_copy(n);
 }
 
 // 猜数字
@@ -97,4 +117,12 @@ fn guess_number() {
             }
         }
     }
+}
+
+fn takes_ownership(s: String) {
+    println!("{}", s);
+}
+
+fn makes_copy(x: i32) {
+    println!("{}", x);
 }
